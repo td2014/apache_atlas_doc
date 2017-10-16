@@ -34,7 +34,8 @@ then
     $HADOOP_HOME/sbin/start-dfs.sh
 
 # Hive
-
+    $HIVE_HOME/bin/schematool -dbType derby -initSchema
+###    $HIVE_HOME/bin/hiveserver2
 # Atlas
 
 elif [ $1  == 'stop' ]
@@ -43,7 +44,7 @@ then
 # Atlas
 
 # Hive
-
+###    $HIVE_HOME/bin/hiveserver2
 # Hadoop
     echo 'Stopping Hadoop.'
     $HADOOP_HOME/sbin/stop-dfs.sh
