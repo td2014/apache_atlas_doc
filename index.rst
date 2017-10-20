@@ -4,7 +4,7 @@
    contain the root `toctree` directive.
 
 Welcome to apache_atlas_doc! The aim is to provide a hands-on guide that illustrates how to use Apache Atlas for data governance.
-=======================================
+=================================================================================================================================
 
 .. toctree::
    :maxdepth: 2
@@ -12,6 +12,7 @@ Welcome to apache_atlas_doc! The aim is to provide a hands-on guide that illustr
 
    ./sections/quickstart
    ./sections/conclusions
+
 
 Indices and tables
 ==================
