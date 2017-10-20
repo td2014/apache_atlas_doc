@@ -45,7 +45,35 @@
             
   <div class="section" id="quick-start">
 <h1>Quick Start<a class="headerlink" href="#quick-start" title="Permalink to this headline">¶</a></h1>
-<p>We will use Hadoop, Hive, and Atlas.</p>
+<p>This section will provide a basic walkthrough to get you started with Atlas.  Note that some of the content here is derived from the official Atlas documentation avaiable here:  <a class="reference external" href="http://atlas.apache.org/Bridge-Hive.html">http://atlas.apache.org/Bridge-Hive.html</a>, and the Hive documentation here: <a class="reference external" href="https://cwiki.apache.org/confluence/display/Hive/GettingStarted">https://cwiki.apache.org/confluence/display/Hive/GettingStarted</a>.</p>
+<p>We will create a basic hook setup for capturing Hive events by the Atlas server.  We assume that you already have Hadoop, Hive, and Atlas running on your system.</p>
+<div class="section" id="step-1-tell-hive-about-atlas">
+<h2>Step 1.  Tell Hive about Atlas.<a class="headerlink" href="#step-1-tell-hive-about-atlas" title="Permalink to this headline">¶</a></h2>
+<p>1a) Add the below lines to hive-site.xml of your Hive installation:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="nb">property</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span><span class="n">hive</span><span class="o">.</span><span class="n">exec</span><span class="o">.</span><span class="n">post</span><span class="o">.</span><span class="n">hooks</span><span class="o">&lt;/</span><span class="n">name</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="n">org</span><span class="o">.</span><span class="n">apache</span><span class="o">.</span><span class="n">atlas</span><span class="o">.</span><span class="n">hive</span><span class="o">.</span><span class="n">hook</span><span class="o">.</span><span class="n">HiveHook</span><span class="o">&lt;/</span><span class="n">value</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="nb">property</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="nb">property</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">name</span><span class="o">&gt;</span><span class="n">atlas</span><span class="o">.</span><span class="n">cluster</span><span class="o">.</span><span class="n">name</span><span class="o">&lt;/</span><span class="n">name</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span><span class="n">primary</span><span class="o">&lt;/</span><span class="n">value</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="nb">property</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>1b) Add the below to hive-env.sh of your Hive installation.  (Note that &lt;atlas package&gt; refers
+to the directory of the Atlas package you generated in the installation/build process):</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">HIVE_AUX_JARS_PATH</span><span class="o">=&lt;</span><span class="n">atlas</span> <span class="n">package</span><span class="o">&gt;/</span><span class="n">hook</span><span class="o">/</span><span class="n">hive</span>
+</pre></div>
+</div>
+<p>1c) Copy &lt;atlas-conf&gt;/atlas-application.properties to the conf directory of your Hive installation.  &lt;atlas-conf&gt; is the conf directory in your &lt;atlas package&gt;.</p>
+<p>1d) Restart Hive so the new configuration is recognized.</p>
+</div>
+<div class="section" id="step-2-add-some-data-to-hive">
+<h2>Step 2.  Add some data to Hive.<a class="headerlink" href="#step-2-add-some-data-to-hive" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="step-3-confirm-metadata-was-captured-by-atlas">
+<h2>Step 3.  Confirm metadata was captured by Atlas.<a class="headerlink" href="#step-3-confirm-metadata-was-captured-by-atlas" title="Permalink to this headline">¶</a></h2>
+</div>
 </div>
 
 
@@ -53,7 +81,17 @@
         </div>
       </div>
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper"><div class="relations">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Quick Start</a><ul>
+<li><a class="reference internal" href="#step-1-tell-hive-about-atlas">Step 1.  Tell Hive about Atlas.</a></li>
+<li><a class="reference internal" href="#step-2-add-some-data-to-hive">Step 2.  Add some data to Hive.</a></li>
+<li><a class="reference internal" href="#step-3-confirm-metadata-was-captured-by-atlas">Step 3.  Confirm metadata was captured by Atlas.</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
 <h3>Related Topics</h3>
 <ul>
   <li><a href="../index.html">Documentation overview</a><ul>
