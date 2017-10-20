@@ -30,13 +30,15 @@ export PATH=$HIVE_HOME/bin:$PATH
 
 if [ $1 == 'start' ]
 then
-# Hadoop.  Note you need to do a rm -rf /tmp/hadoop-anthonydaniell to clean up otherwise the datanode does not start correctly.
+# Hadoop.  
+# Note you need to do a rm -rf /tmp/hadoop-anthonydaniell to clean up otherwise the datanode does not start correctly.
 
     echo 'Starting Hadoop.'
     $HADOOP_HOME/bin/hdfs namenode -format -force
     $HADOOP_HOME/sbin/start-dfs.sh
 
 # Hive - uncomment schematool to create metadata store.
+# Note you need to remove derby.log and metastore_db for clean up restart, then reinitialize using the schematool routine below.
 
     $HIVE_HOME/bin/schematool -dbType derby -initSchema
     $HADOOP_HOME/bin/hadoop fs -mkdir       /tmp
