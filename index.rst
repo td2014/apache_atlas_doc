@@ -10,7 +10,8 @@ Welcome to apache_atlas_doc! The aim is to provide a hands-on guide that illustr
    :maxdepth: 2
    :caption: Contents:
 
-
+   ./sections/quickstart
+   ./sections/conclusions
 
 Indices and tables
 ==================
