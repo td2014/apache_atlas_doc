@@ -1,0 +1,4 @@
+*.zip
+processing_code/testData/
+processing_code/*.log
+processing_code/metastore_db/

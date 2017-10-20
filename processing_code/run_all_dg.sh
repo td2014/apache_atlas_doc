@@ -30,15 +30,22 @@ export PATH=$HIVE_HOME/bin:$PATH
 
 if [ $1 == 'start' ]
 then
-# Hadoop
+# Hadoop.  Note you need to do a rm -rf /tmp/hadoop-anthonydaniell to clean up otherwise the datanode does not start correctly.
+
     echo 'Starting Hadoop.'
-    $HADOOP_HOME/bin/hdfs namenode -format
+    $HADOOP_HOME/bin/hdfs namenode -format -force
     $HADOOP_HOME/sbin/start-dfs.sh
 
 # Hive - uncomment schematool to create metadata store.
 
-###    $HIVE_HOME/bin/schematool -dbType derby -initSchema
-###    $HIVE_HOME/bin/hiveserver2
+    $HIVE_HOME/bin/schematool -dbType derby -initSchema
+    $HADOOP_HOME/bin/hadoop fs -mkdir       /tmp
+    $HADOOP_HOME/bin/hadoop fs -mkdir       /user
+    $HADOOP_HOME/bin/hadoop fs -mkdir       /user/hive
+    $HADOOP_HOME/bin/hadoop fs -mkdir       /user/hive/warehouse
+    $HADOOP_HOME/bin/hadoop fs -chmod g+w   /tmp
+    $HADOOP_HOME/bin/hadoop fs -chmod g+w   /user/hive/warehouse
+
 # Atlas
 ###    $ATLAS_HOME/bin/atlas_start.py
 elif [ $1  == 'stop' ]
@@ -47,7 +54,7 @@ then
 # Atlas
 ###    $ATLAS_HOME/bin/atlas_stop.py
 # Hive
-###    $HIVE_HOME/bin/hiveserver2
+
 # Hadoop
     echo 'Stopping Hadoop.'
     $HADOOP_HOME/sbin/stop-dfs.sh
