@@ -1,7 +1,7 @@
 Quick Start
 ===========
 
-This section will provide a basic walkthrough to get you started with Atlas.  Note that some of the content here is derived from the official Atlas documentation avaiable here:  http://atlas.apache.org/Bridge-Hive.html, and the Hive documentation here: https://cwiki.apache.org/confluence/display/Hive/GettingStarted.
+This section will provide a basic walkthrough to get you started with Atlas.  Note that portions of the content here is derived from the official Atlas documentation at http://atlas.apache.org/Bridge-Hive.html, and the Hive documentation at https://cwiki.apache.org/confluence/display/Hive/GettingStarted.
 
 We will create a basic hook setup for capturing Hive events by the Atlas server.  We assume that you already have Hadoop, Hive, and Atlas running on your system.
 
