@@ -66,13 +66,22 @@ to the directory of the Atlas package you generated in the installation/build pr
 </pre></div>
 </div>
 <p>1c) Copy &lt;atlas-conf&gt;/atlas-application.properties to the conf directory of your Hive installation.  &lt;atlas-conf&gt; is the conf directory in your &lt;atlas package&gt;.</p>
-<p>1d) Restart Hive so the new configuration is recognized.</p>
+<p>1d) Start your Hadoop instance (the below assumes a new starting state for Hadoop):</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$HADOOP_HOME/bin/hdfs namenode -format -force
+$HADOOP_HOME/sbin/start-dfs.sh
+</pre></div>
 </div>
-<div class="section" id="step-2-add-some-data-to-hive">
-<h2>Step 2.  Add some data to Hive.<a class="headerlink" href="#step-2-add-some-data-to-hive" title="Permalink to this headline">¶</a></h2>
+<p>1e) Start your Atlas instance (The first two export lines may be necessary for a local Atlas setup):</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>export MANAGE_LOCAL_HBASE=true
+export MANAGE_LOCAL_SOLR=true
+$ATLAS_HOME/bin/atlas_start.py
+</pre></div>
 </div>
-<div class="section" id="step-3-confirm-metadata-was-captured-by-atlas">
-<h2>Step 3.  Confirm metadata was captured by Atlas.<a class="headerlink" href="#step-3-confirm-metadata-was-captured-by-atlas" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="step-2-add-some-data-to-hive-and-confirm-capture-by-atlas">
+<h2>Step 2.  Add some data to Hive and confirm capture by Atlas.<a class="headerlink" href="#step-2-add-some-data-to-hive-and-confirm-capture-by-atlas" title="Permalink to this headline">¶</a></h2>
+<p>The following tutorial is useful for quickly getting some information into Hive and seeing the results in Atlas:</p>
+<p><a class="reference external" href="https://community.hortonworks.com/articles/36121/using-apache-atlas-to-view-data-lineage.html">https://community.hortonworks.com/articles/36121/using-apache-atlas-to-view-data-lineage.html</a></p>
 </div>
 </div>
 
@@ -86,8 +95,7 @@ to the directory of the Atlas package you generated in the installation/build pr
   <ul>
 <li><a class="reference internal" href="#">Quick Start</a><ul>
 <li><a class="reference internal" href="#step-1-tell-hive-about-atlas">Step 1.  Tell Hive about Atlas.</a></li>
-<li><a class="reference internal" href="#step-2-add-some-data-to-hive">Step 2.  Add some data to Hive.</a></li>
-<li><a class="reference internal" href="#step-3-confirm-metadata-was-captured-by-atlas">Step 3.  Confirm metadata was captured by Atlas.</a></li>
+<li><a class="reference internal" href="#step-2-add-some-data-to-hive-and-confirm-capture-by-atlas">Step 2.  Add some data to Hive and confirm capture by Atlas.</a></li>
 </ul>
 </li>
 </ul>

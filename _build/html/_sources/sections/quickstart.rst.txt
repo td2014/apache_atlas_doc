@@ -25,15 +25,21 @@ to the directory of the Atlas package you generated in the installation/build pr
 
 1c) Copy <atlas-conf>/atlas-application.properties to the conf directory of your Hive installation.  <atlas-conf> is the conf directory in your <atlas package>.
 
-1d) Restart Hive so the new configuration is recognized.
+1d) Start your Hadoop instance (the below assumes a new starting state for Hadoop)::
 
-Step 2.  Add some data to Hive.
--------------------------------
+  $HADOOP_HOME/bin/hdfs namenode -format -force
+  $HADOOP_HOME/sbin/start-dfs.sh
 
+1e) Start your Atlas instance (The first two export lines may be necessary for a local Atlas setup)::
 
+  export MANAGE_LOCAL_HBASE=true
+  export MANAGE_LOCAL_SOLR=true
+  $ATLAS_HOME/bin/atlas_start.py
 
-Step 3.  Confirm metadata was captured by Atlas.
-------------------------------------------------
+Step 2.  Add some data to Hive and confirm capture by Atlas.
+------------------------------------------------------------
+The following tutorial is useful for quickly getting some information into Hive and seeing the results in Atlas:
 
+https://community.hortonworks.com/articles/36121/using-apache-atlas-to-view-data-lineage.html
 
 
