@@ -30,7 +30,7 @@ to the directory of the Atlas package you generated in the installation/build pr
   $HADOOP_HOME/bin/hdfs namenode -format -force
   $HADOOP_HOME/sbin/start-dfs.sh
 
-1e) Start your Atlas instance (The first two export lines may be necessary for a local Atlas setup)::
+1e) Start your Atlas instance (The first two export lines may be necessary for a local Atlas setup, $ATLAS_HOME is the same as <atlas package> above)::
 
   export MANAGE_LOCAL_HBASE=true
   export MANAGE_LOCAL_SOLR=true
